@@ -22,3 +22,19 @@ def update(word, hidden, guess):
 				new_hidden = new_hidden[:i] + word[i] + new_hidden[i+1:]
 
 	return new_hidden
+
+def generate_html(category, hidden):
+	html = f"""
+	<!DOCTYPE html>
+	<html>
+		<head>
+			<title>Hangman!</title>
+		</head>
+		<body>
+			<h1>Categoria</h1>
+			<p>{category}</p>
+			<h1>Palavra</h1>
+			<p>{hidden}</p>
+		</body>
+	</html>
+	"""
