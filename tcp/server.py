@@ -24,6 +24,7 @@ def handle_client(client_socket):
 	print(f"-------------------------")
 
 	category, word = hangman.generate_word()
+	word = word.lower()
 	print(f"Palavra: {word}")
 	hidden = "_"*len(word)
 	
@@ -32,7 +33,7 @@ def handle_client(client_socket):
 
 
 	while hidden.count('_') > 0:
-		guess = client_socket.recv(1024).decode("utf-8")
+		guess = client_socket.recv(1024).decode("utf-8").lower()
 		if hangman.evaluate(word, hidden, guess):
 			hidden = hangman.update(word, hidden, guess)
 
