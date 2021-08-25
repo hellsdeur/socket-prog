@@ -1,16 +1,19 @@
 from random import choice
 import words
+import unidecode
 
 def generate_word():
 	category = choice(list(words.dic.keys()))
 	return (category, choice(words.dic[category]))
 
 def evaluate(word, hidden, guess):
+	word = unidecode.unidecode(word)
 	if (guess in word) and (guess not in hidden):
 		return True
 	return False
 
 def update(word, hidden, guess):
+	word = unidecode.unidecode(word)
 	word_to_check = word.lower()
 	new_hidden = hidden
 
